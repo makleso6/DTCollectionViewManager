@@ -363,6 +363,22 @@ internal enum EventMethodSignature: String {
     case targetContentOffsetForProposedContentOffset = "collectionView:targetContentOffsetForProposedContentOffset:"
     case shouldSpringLoadItem = "collectionView:shouldSpringLoadItemAtIndexPath:withContext:"
     
+    // UIScrollViewDelegate
+    case scrollViewDidScroll = "scrollViewDidScroll:"
+    case scrollViewDidZoom = "scrollViewDidZoom:"
+    case scrollViewWillBeginDragging = "scrollViewWillBeginDragging:"
+    case scrollViewWillEndDraggingWithVelocityTargetContentOffset = "scrollViewWillEndDragging:withVelocity:targetContentOffset:"
+    case scrollViewDidEndDraggingWillDecelerate = "scrollViewDidEndDragging:willDecelerate:"
+    case scrollViewWillBeginDecelerating = "scrollViewWillBeginDecelerating:"
+    case scrollViewDidEndDecelerating = "scrollViewDidEndDecelerating:"
+    case scrollViewDidEndScrollingAnimation = "scrollViewDidEndScrollingAnimation:"
+    case viewForZooming = "viewForZooming:"
+    case scrollViewWillBeginZoomingWith = "scrollViewWillBeginZooming:with:"
+    case scrollViewDidEndZoomingWithAtScale = "scrollViewDidEndZooming:with:atScale:"
+    case scrollViewShouldScrollToTop = "scrollViewShouldScrollToTop:"
+    case scrollViewDidScrollToTop = "scrollViewDidScrollToTop:"
+    case scrollViewDidChangeAdjustedContentInset = "scrollViewDidChangeAdjustedContentInset:"
+    
     // UICollectionViewDelegateFlowLayout
     case sizeForItemAtIndexPath = "collectionView:layout:sizeForItemAtIndexPath:"
     case referenceSizeForHeaderInSection = "collectionView:layout:referenceSizeForHeaderInSection:_imaginarySelector"

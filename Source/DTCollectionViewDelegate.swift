@@ -299,4 +299,90 @@ open class DTCollectionViewDelegate: DTCollectionViewDelegateWrapper, UICollecti
                                                                                   layout: collectionViewLayout,
                                                                                   minimumInteritemSpacingForSectionAt: section) ?? defaultInterItemSpacing ?? 0
     }
+    
+    
+    open func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        _ = performNonCellReaction(.scrollViewDidScroll, argument: scrollView)
+        (delegate as? UIScrollViewDelegate)?.scrollViewDidScroll?(scrollView)
+    }
+    
+    open func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        _ = performNonCellReaction(.scrollViewDidZoom, argument: scrollView)
+        (delegate as? UIScrollViewDelegate)?.scrollViewDidZoom?(scrollView)
+
+    }
+    
+    open func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        _ = performNonCellReaction(.scrollViewWillBeginDragging, argument: scrollView)
+        (delegate as? UIScrollViewDelegate)?.scrollViewWillBeginDragging?(scrollView)
+
+    }
+
+    open func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        _ = performNonCellReaction(.scrollViewWillEndDraggingWithVelocityTargetContentOffset, argumentOne: scrollView, argumentTwo: velocity, argumentThree: targetContentOffset)
+        (delegate as? UIScrollViewDelegate)?.scrollViewWillEndDragging?(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
+    }
+
+    open func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        _ = performNonCellReaction(.scrollViewDidEndDraggingWillDecelerate, argumentOne: scrollView, argumentTwo: decelerate)
+        (delegate as? UIScrollViewDelegate)?.scrollViewDidEndDragging?(scrollView, willDecelerate: decelerate)
+
+    }
+    
+    open func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        _ = performNonCellReaction(.scrollViewWillBeginDecelerating, argument: scrollView)
+        (delegate as? UIScrollViewDelegate)?.scrollViewWillBeginDecelerating?(scrollView)
+
+    }
+    
+    open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        _ = performNonCellReaction(.scrollViewDidEndDecelerating, argument: scrollView)
+        (delegate as? UIScrollViewDelegate)?.scrollViewDidEndDecelerating?(scrollView)
+    }
+    
+    open func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        _ = performNonCellReaction(.scrollViewDidEndScrollingAnimation, argument: scrollView)
+        (delegate as? UIScrollViewDelegate)?.scrollViewDidEndScrollingAnimation?(scrollView)
+
+    }
+    
+    open func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        if let viewForZooming = performNonCellReaction(.viewForZooming, argument: scrollView) as? UIView {
+            return viewForZooming
+        }
+        return (delegate as? UIScrollViewDelegate)?.viewForZooming?(in: scrollView)
+
+    }
+    
+    open func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+        _ = performNonCellReaction(.scrollViewWillBeginZoomingWith, argumentOne: scrollView, argumentTwo: view)
+        (delegate as? UIScrollViewDelegate)?.scrollViewWillBeginZooming?(scrollView, with: view)
+
+    }
+    
+    open func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+        _ = performNonCellReaction(.scrollViewDidEndZoomingWithAtScale, argumentOne: scrollView, argumentTwo: view, argumentThree: scale)
+        (delegate as? UIScrollViewDelegate)?.scrollViewDidEndZooming?(scrollView, with: view, atScale: scale)
+
+    }
+    
+    open func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
+        if let viewForZooming = performNonCellReaction(.scrollViewShouldScrollToTop, argument: scrollView) as? Bool {
+            return viewForZooming
+        }
+        return (delegate as? UIScrollViewDelegate)?.scrollViewShouldScrollToTop?(scrollView) ?? true
+    }
+    
+    open func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+        _ = performNonCellReaction(.scrollViewDidScrollToTop, argument: scrollView)
+        (delegate as? UIScrollViewDelegate)?.scrollViewDidScrollToTop?(scrollView)
+
+    }
+    
+    @available(iOS 11.0, *)
+    open func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView){
+        _ = performNonCellReaction(.scrollViewDidChangeAdjustedContentInset, argument: scrollView)
+        (delegate as? UIScrollViewDelegate)?.scrollViewDidChangeAdjustedContentInset?(scrollView)
+
+    }
 }

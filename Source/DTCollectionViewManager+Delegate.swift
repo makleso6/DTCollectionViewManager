@@ -230,4 +230,63 @@ extension DTCollectionViewManager {
     open func minimumInteritemSpacingForSectionAtIndex(_ closure: @escaping (UICollectionViewLayout, Int) -> CGFloat) {
         collectionDelegate?.appendNonCellReaction(.minimumInteritemSpacingForSectionAtIndex, closure: closure)
     }
+    
+    // MARK: - UIScrollViewDelegate
+    
+    open func scrollViewDidScroll(_ closure: @escaping (UIScrollView) -> Void) {
+        collectionDelegate?.appendNonCellReaction(.scrollViewDidScroll, closure: closure)
+    }
+    
+    open func scrollViewDidZoom(_ closure: @escaping (UIScrollView) -> Void) {
+        collectionDelegate?.appendNonCellReaction(.scrollViewDidZoom, closure: closure)
+    }
+    
+    open func scrollViewWillBeginDragging(_ closure: @escaping (UIScrollView) -> Void) {
+        collectionDelegate?.appendNonCellReaction(.scrollViewWillBeginDragging, closure: closure)
+    }
+    
+    open func scrollViewWillEndDragging(_ closure: @escaping (UIScrollView, CGPoint, UnsafeMutablePointer<CGPoint>) -> Void) {
+        collectionDelegate?.appendNonCellReaction(.scrollViewWillEndDraggingWithVelocityTargetContentOffset, closure: closure)
+    }
+    
+    open func scrollViewDidEndDragging(_ closure: @escaping (UIScrollView, Bool) -> Void) {
+        collectionDelegate?.appendNonCellReaction(.scrollViewDidEndDraggingWillDecelerate, closure: closure)
+    }
+    
+    open func scrollViewWillBeginDecelerating(_ closure: @escaping (UIScrollView) -> Void) {
+        collectionDelegate?.appendNonCellReaction(.scrollViewWillBeginDecelerating, closure: closure)
+    }
+    
+    open func scrollViewDidEndDecelerating(_ closure: @escaping (UIScrollView) -> Void) {
+        collectionDelegate?.appendNonCellReaction(.scrollViewDidEndDecelerating, closure: closure)
+    }
+    
+    open func scrollViewDidEndScrollingAnimation(_ closure: @escaping (UIScrollView) -> Void) {
+        collectionDelegate?.appendNonCellReaction(.scrollViewDidEndScrollingAnimation, closure: closure)
+    }
+    
+    open func viewForZooming(_ closure: @escaping (UIScrollView) -> UIView?) {
+        collectionDelegate?.appendNonCellReaction(.viewForZooming, closure: closure)
+    }
+    
+    open func scrollViewWillBeginZooming(_ closure: @escaping (UIScrollView, UIView) -> Void) {
+        collectionDelegate?.appendNonCellReaction(.scrollViewWillBeginZoomingWith, closure: closure)
+    }
+    
+    open func scrollViewDidEndZooming(_ closure: @escaping (UIScrollView, UIView?, CGFloat) -> Void) {
+        collectionDelegate?.appendNonCellReaction(.scrollViewDidEndZoomingWithAtScale, closure: closure)
+    }
+    
+    open func scrollViewShouldScrollToTop(_ closure: @escaping (UIScrollView, Bool) -> Void) {
+        collectionDelegate?.appendNonCellReaction(.scrollViewShouldScrollToTop, closure: closure)
+    }
+    
+    open func scrollViewDidScrollToTop(_ closure: @escaping (UIScrollView) -> Void) {
+        collectionDelegate?.appendNonCellReaction(.scrollViewDidScrollToTop, closure: closure)
+    }
+    
+    @available(iOS 11.0, *)
+    open func scrollViewDidChangeAdjustedContentInset(_ closure: @escaping (UIScrollView) -> Void) {
+        collectionDelegate?.appendNonCellReaction(.scrollViewDidChangeAdjustedContentInset, closure: closure)
+    }
 }

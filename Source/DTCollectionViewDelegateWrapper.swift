@@ -221,6 +221,11 @@ open class DTCollectionViewDelegateWrapper : NSObject {
             .performWithArguments((argumentOne, argumentTwo, 0))
     }
     
+    func performNonCellReaction<T, U, V>(_ signature: EventMethodSignature, argumentOne: T, argumentTwo: U, argumentThree: V) -> Any? {
+        return collectionViewReactions.first(where: { $0.methodSignature == signature.rawValue })?
+            .performWithArguments((argumentOne, argumentTwo, argumentThree))
+    }
+    
     func performSupplementaryReaction(forKind kind: String, signature: EventMethodSignature, location: IndexPath, view: UICollectionReusableView?) -> Any? {
         guard let model = (storage as? SupplementaryStorage)?.supplementaryModel(ofKind: kind, forSectionAt: location) else { return nil }
         return collectionViewReactions.performReaction(of: .supplementaryView(kind: kind), signature: signature.rawValue, view: view, model: model, location: location)
